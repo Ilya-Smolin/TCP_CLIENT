@@ -90,8 +90,8 @@ void MainWindow::update_timer(){
 void MainWindow::on_pushButton_2_clicked(){
     thread1->start();
     thread2->start();
-//    emit connect_to_tcp(QString("192.168.1.100"), static_cast<quint16>(22800));
-//    emit connect_to_tcp_recv(QString("192.168.1.100"), static_cast<quint16>(22801));
+    emit connect_to_tcp(QString("192.168.1.100"), static_cast<quint16>(22800));
+    emit connect_to_tcp_recv(QString("192.168.1.100"), static_cast<quint16>(22801));
 }
 
 
@@ -99,7 +99,7 @@ void MainWindow::on_pushButton_2_clicked(){
 void MainWindow::on_pushButton_clicked(){
 //    QTime ct = QTime::currentTime();
 //    QFile file(QString("%1.txt").arg(ct.toString("hh:mm")));
-    QFile file("log5.txt");
+    QFile file("log.txt");
     file.open(QIODevice::WriteOnly);
 //    file.write(ui->plainTextEdit->toPlainText().toUtf8());
     file.write(log_string->toUtf8());

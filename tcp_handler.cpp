@@ -47,7 +47,7 @@ void tcp_handler::HandleStateChange(QAbstractSocket::SocketState socketState){
 
 static int counter = 0;
 void tcp_handler::timeout_handler(){
-//    text = new QString;
+    text = new QString;
     counter++;
     uint time_ = static_cast<uint>(elapsed_timer->elapsed());
     if(time_ >= timer_value_msec){
@@ -57,17 +57,16 @@ void tcp_handler::timeout_handler(){
     }
 //    else qDebug() << "ELSE" << function_invertor;
 
-//    if(function_invertor)
-//        text->append(QString("%1").arg(QString::number(value_to_send)));
-//    else
-//        text->append(QString("-%1").arg(QString::number(value_to_send)));
+    if(function_invertor)
+        text->append(QString("%1").arg(QString::number(value_to_send)));
+    else
+        text->append(QString("-%1").arg(QString::number(value_to_send)));
 
-//    QTime ct = QTime::currentTime();
-//    QString text = ct.toString("hh:mm:ss.zzz\n");
-//    QByteArray ba = text->toLatin1();
-//    delete(text);
-//    qDebug() << ba;
-//    send_tcp(ba);
+    QTime ct = QTime::currentTime();
+    QString text = ct.toString("hh:mm:ss.zzz\n");
+    QByteArray ba = text.toLatin1();
+    qDebug() << ba;
+    send_tcp(ba);
 }
 
 void tcp_handler::connect_to_tcp(QString IP, quint16 port){
